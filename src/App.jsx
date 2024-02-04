@@ -1,10 +1,27 @@
+import { useState } from "react"
+import Search from "./components/Search"
+import FoodList from "./components/FoodList";
+import Nav from "./components/Nav";
+import "./App.css"
+import Container from "./components/Container";
+import InnerContainer from "./components/InnerContainer";
+import FoodDetails from "./components/FoodDetails";
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [foods, setFoods] = useState([]);
+  const [foodId, setFoodId] = useState("656329");
   return (
     <div className="App">
-      <h1>Hello</h1>
-        
+      <Nav/>
+      <Search setFoods={setFoods}/>
+      <Container>
+        <InnerContainer>
+          <FoodList foods={foods} setFoodId = {setFoodId} />
+        </InnerContainer>
+        <InnerContainer>
+          <FoodDetails foodId = {foodId}/>
+        </InnerContainer>
+      </Container>
+      
     </div>
   )
 }
